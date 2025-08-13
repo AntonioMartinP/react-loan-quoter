@@ -7,7 +7,7 @@ import './App.css'
 
 function App() {
    const [cantidad, setCantidad] = useState(0);
-    const [plazo, setPlazo] = useState(0);
+    const [plazo, setPlazo] = useState("");
 const titulo="Cotizador de prestamos...";
   return (
     <>

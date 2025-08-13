@@ -1,12 +1,18 @@
-
+import { useState } from "react";
+import { calcularTotal } from "../helpers";
 function Formulario({cantidad, setCantidad, plazo, setPlazo}) {
+  const [error,setError]=useState(false);
   const calcularPrestamo=(e)=>{
     e.preventDefault();
     if([cantidad, plazo].includes(0)){
-      alert("Todos los campos son obligatorios");
+      setError(true);
       return;
     }
-    console.log(`Cantidad: ${cantidad}, Plazo: ${plazo}`);
+        setError(false);
+        const total=calcularTotal(cantidad, plazo);
+        console.log(`Total a pagar: ${total} en ${plazo} meses`);
+    // Aquí podrías agregar la lógica para calcular el préstamo
+    console.log(`Cantidad: ${cantidad}`);
     // Aquí podrías agregar la lógica para calcular el préstamo
     // Por ejemplo, enviar los datos a una API o realizar un cálculo localmente
   }
@@ -39,7 +45,7 @@ function Formulario({cantidad, setCantidad, plazo, setPlazo}) {
           <input type="submit" value="Calcular" />
         </div>
       </form>
-       
+      <p className="error">{error && "Todos los campos son obligatorios"}</p>
      </> 
   )
 }
