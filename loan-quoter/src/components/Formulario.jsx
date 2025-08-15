@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { calcularTotal } from "../helpers";
-function Formulario({cantidad, setCantidad, plazo, setPlazo}) {
+function Formulario({cantidad, setCantidad, plazo, setPlazo, setTotal}) {
   const [error,setError]=useState(false);
   const calcularPrestamo=(e)=>{
     e.preventDefault();
@@ -10,7 +10,8 @@ function Formulario({cantidad, setCantidad, plazo, setPlazo}) {
     }
         setError(false);
         const total=calcularTotal(cantidad, plazo);
-        console.log(`Total a pagar: ${total} en ${plazo} meses`);
+        setTotal(total);
+       // console.log(`Total a pagar: ${total} en ${plazo} meses`);
     // Aquí podrías agregar la lógica para calcular el préstamo
     console.log(`Cantidad: ${cantidad}`);
     // Aquí podrías agregar la lógica para calcular el préstamo
